@@ -20,9 +20,11 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
         LinearLayout sendLayout;
         LinearLayout receiveLayout;
         TextView sendContext;
+        TextView sendTime;
         TextView receiveContext;
         ImageView sendPic;
         ImageView receivePic;
+        TextView receiveTime;
     }
 
     public int resourceId;
@@ -44,10 +46,12 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.sendLayout = (LinearLayout)view.findViewById(R.id.ll_send);
             viewHolder.sendContext = (TextView) view.findViewById(R.id.send_text);
             viewHolder.sendPic = (ImageView) view.findViewById(R.id.send_text_user);
+            viewHolder.sendTime = (TextView) view.findViewById(R.id.send_time);
 
             viewHolder.receiveLayout = (LinearLayout)view.findViewById(R.id.ll_receive);
             viewHolder.receiveContext = (TextView) view.findViewById(R.id.receive_text);
             viewHolder.receivePic = (ImageView) view.findViewById(R.id.receive_text_user);
+            viewHolder.receiveTime = (TextView) view.findViewById(R.id.receive_time);
 
             view.setTag(viewHolder);
         }else{
@@ -61,12 +65,14 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.receiveLayout.setVisibility(View.GONE);
             viewHolder.sendContext.setText(msg.context);
             viewHolder.sendPic.setImageResource(msg.from.pic);
+            viewHolder.sendTime.setText(msg.time);
         }
         else{ //if the send person are others
             viewHolder.sendLayout.setVisibility(View.GONE);
             viewHolder.receiveLayout.setVisibility(View.VISIBLE);
             viewHolder.receiveContext.setText(msg.context);
             viewHolder.receivePic.setImageResource(msg.from.pic);
+            viewHolder.receiveTime.setText(msg.time);
         }
 
         return view;

@@ -15,6 +15,7 @@ import java.util.List;
 
 import hk.edu.cuhk.ie.iems5722.helloworld.Adapter.MsgAdapter;
 import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Time;
 import hk.edu.cuhk.ie.iems5722.helloworld.Entity.User;
 
 public class DefaultRoomActivity extends AppCompatActivity {
@@ -49,7 +50,7 @@ public class DefaultRoomActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String inputText = input.getText().toString();
                 if(!"".equals(inputText)){
-                    Msg msg = new Msg(MainActivity.currUser, MainActivity.currRoom, inputText);
+                    Msg msg = new Msg(MainActivity.currUser, MainActivity.currRoom, inputText, Time.getMessageTime());
                     msgList.add(msg);
                     adapter.notifyDataSetChanged();
                     //scroll to bottom automatically when new msg comes in
@@ -61,6 +62,9 @@ public class DefaultRoomActivity extends AppCompatActivity {
     }
 
 
+    private String testString = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm";
+    private String testString2 = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm";
+
     public void mockData(){
         User user1 = new User("1155169011TuNina", "Tu", R.mipmap.user_pic_1);
         User user2 = new User("1155169022LuoShaojie", "Luo", R.mipmap.user_pic_2);
@@ -68,10 +72,10 @@ public class DefaultRoomActivity extends AppCompatActivity {
         users.add(user1);
         users.add(user2);
 
-        Msg msg_0_0 = new Msg(MainActivity.currUser, MainActivity.currRoom, "Hello everyone!");
-        Msg msg_0_1 = new Msg(MainActivity.currUser, MainActivity.currRoom, "Welcome to my chat room!");
-        Msg msg_1_0 = new Msg(user1, MainActivity.currRoom, "Hello Xinyi. I am Nina!");
-        Msg msg_2_0 = new Msg(user2, MainActivity.currRoom, "Hi Xinyi. Here is Shaojie!");
+        Msg msg_0_0 = new Msg(MainActivity.currUser, MainActivity.currRoom, testString, "02:02:02");
+        Msg msg_0_1 = new Msg(MainActivity.currUser, MainActivity.currRoom, testString2, "03:03:03");
+        Msg msg_1_0 = new Msg(user1, MainActivity.currRoom, testString, "04:04:04");
+        Msg msg_2_0 = new Msg(user2, MainActivity.currRoom, testString2, "05:05:05");
 
         msgList.add(msg_0_0);
         msgList.add(msg_0_1);
