@@ -8,6 +8,20 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/time_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/msg_time_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll_receive"
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -57,7 +71,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
 
@@ -77,9 +91,9 @@
                 android:id="@+id/send_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="15dp"
                 android:layout_gravity="left"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
                 android:text="TextView" />
         </LinearLayout>
 
@@ -90,5 +104,6 @@
             android:layout_weight="0" />
 
     </LinearLayout>
+
 
 </LinearLayout>

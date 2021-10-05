@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
-            android:name=".DefaultRoomActivity"
+            android:name=".Activity.DefaultRoomActivity"
             android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity

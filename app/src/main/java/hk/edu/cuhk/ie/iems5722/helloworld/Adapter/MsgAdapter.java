@@ -1,5 +1,8 @@
 package hk.edu.cuhk.ie.iems5722.helloworld.Adapter;
 
+import static hk.edu.cuhk.ie.iems5722.helloworld.Consts.MessageTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time.getChatStartTime;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time;
 import hk.edu.cuhk.ie.iems5722.helloworld.MainActivity;
 import hk.edu.cuhk.ie.iems5722.helloworld.R;
 
@@ -25,6 +29,8 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
         ImageView sendPic;
         ImageView receivePic;
         TextView receiveTime;
+        LinearLayout timeBarLayout;
+        TextView timeBar;
     }
 
     public int resourceId;
@@ -36,7 +42,6 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
 
     public View getView(int position, View convertView, ViewGroup parent){
         Msg msg = getItem(position);
-
         View view;
         ViewHolder viewHolder;
 
@@ -53,11 +58,35 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.receivePic = (ImageView) view.findViewById(R.id.receive_text_user);
             viewHolder.receiveTime = (TextView) view.findViewById(R.id.receive_time);
 
+            viewHolder.timeBarLayout = (LinearLayout) view.findViewById(R.id.time_bar_layout);
+            viewHolder.timeBar = (TextView) view.findViewById(R.id.msg_time_bar);
+
             view.setTag(viewHolder);
         }else{
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
+
+        //checkTime
+        //if the message is the first one
+        if(position == 0){
+            viewHolder.timeBarLayout.setVisibility(View.VISIBLE);
+            //given a virtual time: last 2 days can make sure time bar can be shown
+            String format = Time.getGapTimeFormat(msg.timeMillis - 2 * Time.oneDay, msg.timeMillis);
+            viewHolder.timeBar.setText(Time.getChatStartTime(msg.timeMillis, format));
+        }
+        else{
+            Msg lastMsg = getItem(position - 1);
+            String format = Time.getGapTimeFormat(lastMsg.timeMillis, msg.timeMillis);
+            if(format.length() == 0){
+                viewHolder.timeBarLayout.setVisibility(View.GONE);
+            }else{
+                viewHolder.timeBarLayout.setVisibility(View.VISIBLE);
+                viewHolder.timeBar.setText(Time.getChatStartTime(msg.timeMillis, format));
+            }
+        }
+
+        String messageShowFormat = getChatStartTime(msg.timeMillis, MessageTimeFormat);
 
         //if the send person is exactly the current user
         if(msg.from.id.equals(MainActivity.currUser.id)){
@@ -65,14 +94,14 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.receiveLayout.setVisibility(View.GONE);
             viewHolder.sendContext.setText(msg.context);
             viewHolder.sendPic.setImageResource(msg.from.pic);
-            viewHolder.sendTime.setText(msg.time);
+            viewHolder.sendTime.setText(messageShowFormat);
         }
         else{ //if the send person are others
             viewHolder.sendLayout.setVisibility(View.GONE);
             viewHolder.receiveLayout.setVisibility(View.VISIBLE);
             viewHolder.receiveContext.setText(msg.context);
             viewHolder.receivePic.setImageResource(msg.from.pic);
-            viewHolder.receiveTime.setText(msg.time);
+            viewHolder.receiveTime.setText(messageShowFormat);
         }
 
         return view;

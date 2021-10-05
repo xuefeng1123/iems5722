@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.helloworld.Activity.DefaultRoomActivity;
 import hk.edu.cuhk.ie.iems5722.helloworld.Entity.User;
 
 public class MainActivity extends AppCompatActivity {

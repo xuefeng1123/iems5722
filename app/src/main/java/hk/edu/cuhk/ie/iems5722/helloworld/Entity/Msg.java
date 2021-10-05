@@ -4,13 +4,15 @@ public class Msg {
     public User from;
     public String to;
     public String context;
-    public String time;
 
-    public Msg(User from, String to, String context, String time){
+    public long timeMillis;
+
+    public Msg(User from, String to, String context, long timeMillis){
         this.from = from;
         this.to = to;
         this.context = context;
-        this.time = time;
+
+        this.timeMillis = timeMillis;
     }
 
 }
