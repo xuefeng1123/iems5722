@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/ll_receive"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:gravity="left"
         android:orientation="horizontal">
 
@@ -48,7 +48,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@mipmap/send_bubble" />
+                android:background="@mipmap/msg_bg_rece" />
 
             <TextView
                 android:id="@+id/receive_time"
@@ -66,7 +66,7 @@
     <LinearLayout
         android:id="@+id/ll_send"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="horizontal">
 
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:background="@mipmap/send_bubble" />
+                android:background="@mipmap/msg_bg_send" />
 
             <TextView
                 android:id="@+id/send_time"
