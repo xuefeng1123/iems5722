@@ -1,7 +1,7 @@
-package hk.edu.cuhk.ie.iems5722.helloworld.Activity;
+package hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity;
 
-import static hk.edu.cuhk.ie.iems5722.helloworld.Consts.MessageClassTimeFormat;
-import static hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time.getTimeMillis;
+import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageClassTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getTimeMillis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,12 +15,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.helloworld.Adapter.MsgAdapter;
-import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Msg;
-import hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time;
-import hk.edu.cuhk.ie.iems5722.helloworld.Entity.User;
-import hk.edu.cuhk.ie.iems5722.helloworld.MainActivity;
-import hk.edu.cuhk.ie.iems5722.helloworld.R;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter.MsgAdapter;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
 
 public class DefaultRoomActivity extends AppCompatActivity {
 
@@ -48,6 +47,8 @@ public class DefaultRoomActivity extends AppCompatActivity {
 
         adapter = new MsgAdapter(DefaultRoomActivity.this, R.layout.msg_item, msgList);
         msgListView.setAdapter(adapter);
+
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +89,5 @@ public class DefaultRoomActivity extends AppCompatActivity {
 
     }
 
-    private void checkTimeGap(){
-        Msg lastMsg = msgList.get(msgList.size() - 1);
 
-    }
 }

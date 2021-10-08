@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.helloworld;
+package hk.edu.cuhk.ie.iems5722.a1_1155169095;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
-import hk.edu.cuhk.ie.iems5722.helloworld.Activity.DefaultRoomActivity;
-import hk.edu.cuhk.ie.iems5722.helloworld.Entity.User;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity.DefaultRoomActivity;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
 
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";

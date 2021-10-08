@@ -1,7 +1,7 @@
-package hk.edu.cuhk.ie.iems5722.helloworld.Adapter;
+package hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter;
 
-import static hk.edu.cuhk.ie.iems5722.helloworld.Consts.MessageTimeFormat;
-import static hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time.getChatStartTime;
+import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getChatStartTime;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.helloworld.Entity.Msg;
-import hk.edu.cuhk.ie.iems5722.helloworld.Utils.Time;
-import hk.edu.cuhk.ie.iems5722.helloworld.MainActivity;
-import hk.edu.cuhk.ie.iems5722.helloworld.R;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
 
 public class MsgAdapter extends ArrayAdapter<Msg> {
     class ViewHolder{
@@ -34,13 +35,16 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
     }
 
     public int resourceId;
+    private Context mContext;
 
     public MsgAdapter(Context context, int textViewResourceId, List<Msg> msgs){
         super(context, textViewResourceId, msgs);
         this.resourceId = textViewResourceId;
+        this.mContext = context;
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
+        ListView msgListView = (ListView) parent;
         Msg msg = getItem(position);
         View view;
         ViewHolder viewHolder;
@@ -103,7 +107,31 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.receivePic.setImageResource(msg.from.pic);
             viewHolder.receiveTime.setText(messageShowFormat);
         }
-
+//        viewHolder.sendLayout.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//
+//                view.getParent();
+//                View itemView = convertView;
+//                if (itemView==null)
+//                    itemView = LayoutInflater.from(mContext).inflate(R.layout.msg_item, parent, false);
+//
+//                int start = msgListView.getFirstVisiblePosition();
+//                int end = msgListView.getLastVisiblePosition();
+//                for(int i = start; i <= end; i++){
+//                    if(view.findViewById(R.id.ll_send).getVisibility() == View.VISIBLE){//send bubble
+//                        int lightness = 240;
+//                        if(start != end)
+//                            lightness = 240*(1 - (end - i)/(start - end));
+//                        int color = (255 & 0xff) << 24 | (0 & 0xff) << 16 | (lightness & 0xff) << 8 | (0 & 0xff);
+//                        PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+//                        view.findViewById(R.id.send_bubble).getBackground().setColorFilter(colorFilter);
+//                        Log.i("0", "start = " + start + ", end = " + end + ", i = " + i);
+//                    }
+//                }
+//                return false;
+//            }
+//        });
         return view;
     }
 }

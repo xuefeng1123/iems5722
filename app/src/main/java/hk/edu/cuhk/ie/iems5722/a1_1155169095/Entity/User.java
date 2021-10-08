@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.helloworld.Entity;
+package hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity;
 
 public class User {
     public String id;

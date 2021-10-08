@@ -36,9 +36,11 @@
             />
 
         <LinearLayout
+            android:id="@+id/receive_bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:background="@mipmap/msg_bg_rece"
             android:orientation="vertical">
 
             <TextView
@@ -48,16 +50,17 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@mipmap/msg_bg_rece" />
+                 />
 
             <TextView
                 android:id="@+id/receive_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:gravity="right"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#80000000" />
         </LinearLayout>
 
     </LinearLayout>
@@ -71,30 +74,33 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/send_bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-
             android:layout_marginLeft="60dp"
             android:gravity="right"
+            android:background="@mipmap/msg_bg_send"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/send_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:background="@mipmap/msg_bg_send" />
+                android:layout_weight="1"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/send_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:gravity="right"
+                android:text="TextView"
+                android:textColor="#CCFFFFFF" />
         </LinearLayout>
 
         <ImageView

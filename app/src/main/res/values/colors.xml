@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#0000</color>
+    <color name="msg_send_bubble">#00FF00</color>
+    <color name="msg_rece_bubble">#C9C9C9</color>
 </resources>

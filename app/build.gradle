@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "hk.edu.cuhk.ie.iems5722.helloworld"
+        applicationId "hk.edu.cuhk.ie.iems5722.a1_1155169095"
         minSdk 21
         targetSdk 31
         versionCode 1

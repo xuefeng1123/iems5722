@@ -1,8 +1,8 @@
-package hk.edu.cuhk.ie.iems5722.helloworld;
+package hk.edu.cuhk.ie.iems5722.a1_1155169095;
 
 public class Consts {
     //format with message
-    public static String MessageTimeFormat = "HH:mm:ss";
+    public static String MessageTimeFormat = "HH:mm";
 
     //format for class Msg time record
     public static String MessageClassTimeFormat = "yyyy/MM/dd  HH:mm:ss";
