@@ -24,4 +24,5 @@ public class Consts {
     //The length of the time unit used to convert month, day and year
     // 换算月日年的时间单位长度           秒 ， 分， 时， 日， 月， 年
     public static int[] TimeSlice = {1000, 60, 60, 24, 30, 12};
+
 }

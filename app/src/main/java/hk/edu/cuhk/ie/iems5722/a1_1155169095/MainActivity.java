@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
 
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity.DefaultRoomActivity;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Network.Client;
 
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";
 
     public static User currUser = new User("1155169095YangXinyi", "Yang", R.mipmap.user_pic_0);
 
-
+    public static Client client = new Client();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        client.getRequest();
+
     }
 
 }
