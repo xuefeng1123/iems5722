@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        client.getRequest(this);
-
+        //client.getRequest(this);
+        Client.getMessages(this,2,1);
     }
 
 }

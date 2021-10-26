@@ -15,6 +15,6 @@ public class APIString {
     static public String SEND_MESSAGES = contactAPI(ServerHost, Version, "send_messages");
 
     static public String contactAPI(String server, String version, String func){
-        return Head + "//" + server +  "/" + version + "/" + func;
+        return Head + server +  "/" + version + "/" + func;
     }
 }

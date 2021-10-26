@@ -1,9 +1,29 @@
 package hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
+import java.util.Date;
+
 public class Msg {
+    @JSONField(name = "from")
     public User from;
+
+    @JSONField(name = "to")
     public String to;
+
+    @JSONField(name = "message")
     public String context;
+
+    @JSONField(name = "message_time", format = "YYYY-MM-dd HH:mm")
+    public Date date;
+
+    public Msg(){
+
+    }
+
+    public void setTimeMillis(long timeMillis) {
+        this.timeMillis = timeMillis;
+    }
 
     public long timeMillis;
 
