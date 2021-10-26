@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        client.getRequest();
+        client.getRequest(this);
 
     }
 
