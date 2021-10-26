@@ -17,6 +17,9 @@ public class Msg {
     @JSONField(name = "message_time", format = "YYYY-MM-dd HH:mm")
     public Date date;
 
+    public long timeMillis;
+
+
     public Msg(){
 
     }
@@ -25,7 +28,6 @@ public class Msg {
         this.timeMillis = timeMillis;
     }
 
-    public long timeMillis;
 
     public Msg(User from, String to, String context, long timeMillis){
         this.from = from;

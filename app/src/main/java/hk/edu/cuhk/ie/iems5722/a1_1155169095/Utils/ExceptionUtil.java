@@ -13,4 +13,5 @@ public class ExceptionUtil {
             super("Failed to get info from server!!");
         }
     }
+
 }

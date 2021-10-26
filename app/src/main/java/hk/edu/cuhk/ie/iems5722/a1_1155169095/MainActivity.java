@@ -29,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DefaultRoomActivity.class);
+                intent.putExtra("chatroomID", 2);
+                intent.putExtra("chatroomName", "hhh");
                 startActivity(intent);
             }
         });
 
         //client.getRequest(this);
-        Client.getMessages(this,2,1);
+        //Client.getMessages(this,2,1);
     }
 
 }

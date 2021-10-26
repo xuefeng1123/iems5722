@@ -10,7 +10,7 @@ public class Chatroom {
     @JSONField(name = "name")
     public String name;
 
-    public int page = -1;
+    public int page = 0;
 
     public int getPage() {
         return page;

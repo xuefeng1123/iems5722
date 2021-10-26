@@ -12,7 +12,7 @@ public class ExceptionHandler {
         ((Activity)context).findViewById(android.R.id.content).post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, "IllegalChatroomID", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "The chat room has been disbanded", Toast.LENGTH_LONG).show();
             }
         });
     }
