@@ -104,7 +104,7 @@ public class Client  {
                         JSONObject responseJson = JSON.parseObject(res);
                         if(responseJson.get("status").equals("OK")){
                             JSONObject dataJson = responseJson.getJSONObject("data");
-                            String currentPage = dataJson.getString("current_page");
+                            int currentPage = dataJson.getIntValue("current_page");
                             JSONArray messagesJson = dataJson.getJSONArray("messages");
                             int totalPages = dataJson.getIntValue("total_page");
 
@@ -128,7 +128,7 @@ public class Client  {
                             ((Activity)context).runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ((DefaultRoomActivity) context).updateMessagesPage(messages);
+                                    ((DefaultRoomActivity) context).updateMessagesPage(messages, currentPage, totalPages);
                                 }
                             });
                         }else{

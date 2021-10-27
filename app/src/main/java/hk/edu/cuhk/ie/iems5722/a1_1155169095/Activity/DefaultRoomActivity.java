@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -38,11 +40,13 @@ public class DefaultRoomActivity extends AppCompatActivity {
     private MsgAdapter adapter;
 
     public Chatroom chatroom;
+
+    private boolean ifScrollTop = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_room);
-        Chatroom chatroom = new Chatroom();
+        chatroom = new Chatroom();
         Intent intent = getIntent();
         try{
             int chatroomID = intent.getIntExtra("chatroomID", -1);
@@ -82,7 +86,28 @@ public class DefaultRoomActivity extends AppCompatActivity {
                 //network request: get messages
                 Client.getMessages(this, chatroom.id, chatroom.page);
 
-                //Client.getMessages(this,2,1);
+                msgListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChanged(AbsListView absListView, int i) {
+                        if(ifScrollTop && i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE){
+                            try{
+                                if(chatroom.page == chatroom.totalPage){
+                                    throw new ExceptionUtil.LoadedAllMsgException();
+                                }else{
+                                    Client.getMessages(DefaultRoomActivity.this, chatroom.id, chatroom.page + 1);
+                                }
+                            }catch (ExceptionUtil.LoadedAllMsgException e){
+                                ExceptionHandler.handleLoadedAllMsgException(DefaultRoomActivity.this);
+                            }
+                        }
+                        ifScrollTop = false;
+                    }
+
+                    @Override
+                    public void onScroll(AbsListView absListView, int firstIndex, int visible, int total) {
+                        ifScrollTop = firstIndex == 0;
+                    }
+                });
             }else{
                 throw new ExceptionUtil.IllegalChatroomIDException();
             }
@@ -94,12 +119,22 @@ public class DefaultRoomActivity extends AppCompatActivity {
 
     }
 
-    public void updateMessagesPage(List<Msg> msgs){
+    public void updateMessagesPage(List<Msg> msgs, int page, int totalPages){
         Log.i("get msg!", "get msg!!");
         //msgList = msgs;
-        msgList.clear();
-        msgList.addAll(msgs);
+        chatroom.page = page;
+        chatroom.totalPage = totalPages;
+
+        msgList.addAll(0, msgs);
         adapter.notifyDataSetChanged();
+
+        //when the page == 1, means that the user open this chatroom just now, so the chatroom should
+        //show the newest message
+        if(page == 1){
+            msgListView.setSelection(msgList.size());
+        }else{
+            msgListView.setSelection(msgs.size());
+        }
     }
 
 

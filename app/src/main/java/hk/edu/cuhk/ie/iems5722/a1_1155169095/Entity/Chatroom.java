@@ -14,6 +14,8 @@ public class Chatroom {
 
     public int page = 0;
 
+    public int totalPage = 0;
+
     public int pic = R.mipmap.chatroom_pic_0;
 
     public int getPage() {

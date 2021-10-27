@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         >
 
         <EditText

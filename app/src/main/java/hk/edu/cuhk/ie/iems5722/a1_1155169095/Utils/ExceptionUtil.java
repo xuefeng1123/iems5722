@@ -14,4 +14,8 @@ public class ExceptionUtil {
         }
     }
 
+    static public class LoadedAllMsgException extends Exception{
+        public LoadedAllMsgException() { super("Loaded all messages!"); }
+    }
+
 }
