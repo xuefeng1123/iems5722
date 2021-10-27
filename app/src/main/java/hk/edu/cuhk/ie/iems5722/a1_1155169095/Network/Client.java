@@ -22,12 +22,16 @@ import hk.edu.cuhk.ie.iems5722.a1_1155169095.APIString;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity.DefaultRoomActivity;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Chatroom;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionHandler;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionUtil;
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Client  {
@@ -155,6 +159,46 @@ public class Client  {
         asyncTask.execute(null,null);
     }
 
+    public static void postMsg(Context context, JSONObject postMsgJson, String url){
+        //RequestBody requestBody =  RequestBody.create( postMsgJson.toJSONString(), okhttp3.MediaType.get("application/json; charset=utf-8"));
+        RequestBody requestBody =  new FormBody.Builder()
+                .add("chatroom_id", postMsgJson.getString("chatroom_id"))
+                .add("message", postMsgJson.getString("message"))
+                .add("user_id", postMsgJson.getString("user_id"))
+                .add("name", postMsgJson.getString("name"))
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        AsyncTask<Void, Void, String> asyncTask = new AsyncTask<Void, Void, String>(){
 
+            @Override
+            protected String doInBackground(Void... voids) {
+                try{
+                    Response response = client.newCall(request).execute();
+                    if(response.isSuccessful()){
+                        ((Activity) context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((DefaultRoomActivity) context).postedMsgSucceed(postMsgJson);
+                            }
+                        });
+                    }else{
+                        throw new ExceptionUtil.PostInfoException();
+                    }
+                }catch (IOException e){
+                    Log.e("IOE in post process", e.toString());
+                    ExceptionHandler.handlePostInfoException(context);
+                }catch (ExceptionUtil.PostInfoException e){
+                    Log.e("Error in post process!", e.toString());
+                    ExceptionHandler.handlePostInfoException(context);
+                }
+
+                return null;
+            }
+        };
+        asyncTask.execute();
+    }
 
 }

@@ -18,4 +18,8 @@ public class ExceptionUtil {
         public LoadedAllMsgException() { super("Loaded all messages!"); }
     }
 
+    static public class PostInfoException extends Exception {
+        public PostInfoException() { super("Failed to send message!");}
+    }
+
 }

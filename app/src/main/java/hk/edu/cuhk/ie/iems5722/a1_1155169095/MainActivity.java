@@ -21,7 +21,7 @@ import hk.edu.cuhk.ie.iems5722.a1_1155169095.Network.Client;
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";
 
-    public static User currUser = new User("1155169095YangXinyi", "Yang", R.mipmap.user_pic_0);
+    public static User currUser = new User("1155169095", "Xuefeng", R.mipmap.user_pic_0);
 
     private volatile List<Chatroom> chatroomList = new ArrayList<Chatroom>();
 

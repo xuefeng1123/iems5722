@@ -34,4 +34,12 @@ public class ExceptionHandler {
             }
         });
     }
+    public static void handlePostInfoException(Context context){
+        ((Activity) context).findViewById(android.R.id.content).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context, "Failed to send messages!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }

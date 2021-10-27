@@ -1,5 +1,6 @@
 package hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity;
 
+import static hk.edu.cuhk.ie.iems5722.a1_1155169095.APIString.SEND_MESSAGES;
 import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageClassTimeFormat;
 import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getTimeMillis;
 
@@ -15,7 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter.MsgAdapter;
@@ -72,12 +76,7 @@ public class DefaultRoomActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         String inputText = input.getText().toString();
                         if(!"".equals(inputText)){
-                            Msg msg = new Msg(MainActivity.currUser, MainActivity.currRoom, inputText, System.currentTimeMillis());
-                            msgList.add(msg);
-                            adapter.notifyDataSetChanged();
-                            //scroll to bottom automatically when new msg comes in
-                            msgListView.setSelection(msgList.size());
-                            input.setText("");
+                            Client.postMsg(DefaultRoomActivity.this, getPostMsgJsonObject(inputText) ,SEND_MESSAGES);
                         }
                     }
                 });
@@ -121,7 +120,7 @@ public class DefaultRoomActivity extends AppCompatActivity {
 
     public void updateMessagesPage(List<Msg> msgs, int page, int totalPages){
         Log.i("get msg!", "get msg!!");
-        //msgList = msgs;
+        Collections.reverse(msgs);
         chatroom.page = page;
         chatroom.totalPage = totalPages;
 
@@ -137,6 +136,28 @@ public class DefaultRoomActivity extends AppCompatActivity {
         }
     }
 
+    public JSONObject getPostMsgJsonObject(String message){
+        JSONObject postMsgJsonObj = new JSONObject();
+        postMsgJsonObj.put("chatroom_id", chatroom.id);
+        postMsgJsonObj.put("user_id", MainActivity.currUser.id);
+        postMsgJsonObj.put("name", MainActivity.currUser.name);
+        postMsgJsonObj.put("message", message);
+        return postMsgJsonObj;
+    }
+
+    public void refreshChat(){
+        Client.getMessages(this, chatroom.id, 1);
+    }
+
+    public void postedMsgSucceed(JSONObject postMsg){
+        Msg msg = new Msg(MainActivity.currUser, postMsg.getString("chatroom_id"),
+                postMsg.getString("message"), System.currentTimeMillis());
+        msgList.add(msg);
+        adapter.notifyDataSetChanged();
+        //scroll to bottom automatically when new msg comes in
+        msgListView.setSelection(msgList.size());
+        input.setText("");
+    }
 
     private String testString = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm";
     private String testString2 = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm";
