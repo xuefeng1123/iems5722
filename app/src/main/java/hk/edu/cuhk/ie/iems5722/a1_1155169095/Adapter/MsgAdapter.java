@@ -32,6 +32,7 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
         TextView receiveTime;
         LinearLayout timeBarLayout;
         TextView timeBar;
+        TextView receiveMsgSender;
     }
 
     public int resourceId;
@@ -64,6 +65,8 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
 
             viewHolder.timeBarLayout = (LinearLayout) view.findViewById(R.id.time_bar_layout);
             viewHolder.timeBar = (TextView) view.findViewById(R.id.msg_time_bar);
+
+            viewHolder.receiveMsgSender = (TextView) view.findViewById(R.id.receive_msg_sender);
 
             view.setTag(viewHolder);
         }else{
@@ -106,6 +109,7 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewHolder.receiveContext.setText(msg.context);
             viewHolder.receivePic.setImageResource(msg.from.pic);
             viewHolder.receiveTime.setText(messageShowFormat);
+            viewHolder.receiveMsgSender.setText(msg.from.name);
         }
 //        viewHolder.sendLayout.setOnTouchListener(new View.OnTouchListener() {
 //            @Override

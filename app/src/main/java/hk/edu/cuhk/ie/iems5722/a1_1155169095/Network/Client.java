@@ -53,6 +53,12 @@ public class Client  {
                         if(responseJson.get("status").equals("OK")){
                             String dataString = responseJson.getString("data");
                             List<Chatroom> rooms = JSON.parseArray(dataString, Chatroom.class);
+                            ((Activity)context).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ((MainActivity) context).updateChatroomList(rooms);
+                                }
+                            });
                         }else{
                             throw new ExceptionUtil.GetInfoException();
                         }

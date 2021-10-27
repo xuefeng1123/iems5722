@@ -36,31 +36,47 @@
             />
 
         <LinearLayout
-            android:id="@+id/receive_bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:background="@mipmap/msg_bg_rece"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/receive_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                 />
-
-            <TextView
-                android:id="@+id/receive_time"
+                android:id="@+id/receive_msg_sender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:gravity="right"
                 android:text="TextView"
-                android:textColor="#80000000" />
+                android:textColor="#7C7C7C" />
+
+            <LinearLayout
+                android:id="@+id/receive_bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="@mipmap/msg_bg_rece"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/receive_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:textColor="#292929" />
+
+                <TextView
+                    android:id="@+id/receive_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="TextView"
+                    android:textColor="#80000000" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
