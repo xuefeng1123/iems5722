@@ -1,5 +1,6 @@
 package hk.edu.cuhk.ie.iems5722.a1_1155169095;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,10 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView chatroomListView;
     private ChatroomAdapter chatroomAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar =  getSupportActionBar();
+        actionBar.setTitle(R.string.chat_list_page_title);
 
         Button openDefaultRoomBtn = (Button)findViewById(R.id.default_chatroom);
 
@@ -63,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void updateChatroomList(List<Chatroom> chatrooms){
         chatroomList.clear();

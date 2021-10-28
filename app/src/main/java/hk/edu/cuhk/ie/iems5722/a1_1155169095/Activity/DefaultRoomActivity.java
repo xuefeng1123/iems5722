@@ -4,11 +4,14 @@ import static hk.edu.cuhk.ie.iems5722.a1_1155169095.APIString.SEND_MESSAGES;
 import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageClassTimeFormat;
 import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getTimeMillis;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -46,10 +49,31 @@ public class DefaultRoomActivity extends AppCompatActivity {
     public Chatroom chatroom;
 
     private boolean ifScrollTop = false;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.chatroom_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.refresh_btn:
+                refreshChat();
+            case android.R.id.home:
+                finish();
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_room);
+
+
         chatroom = new Chatroom();
         Intent intent = getIntent();
         try{
@@ -59,6 +83,9 @@ public class DefaultRoomActivity extends AppCompatActivity {
                 chatroom.name = intent.getStringExtra("chatroomName");
                 chatroom.page = 1;
 
+
+                ActionBar actionBar =  getSupportActionBar();
+                actionBar.setTitle(chatroom.name);
                 //mockData();
 
 
@@ -124,14 +151,28 @@ public class DefaultRoomActivity extends AppCompatActivity {
         chatroom.page = page;
         chatroom.totalPage = totalPages;
 
-        msgList.addAll(0, msgs);
-        adapter.notifyDataSetChanged();
+
 
         //when the page == 1, means that the user open this chatroom just now, so the chatroom should
         //show the newest message
         if(page == 1){
-            msgListView.setSelection(msgList.size());
+//            int totalSize = msgList.size();
+//            if(totalSize >= msgs.size()){
+//                for(int i = 0; i < msgs.size() ; i++){
+//                    msgList.set(totalSize - 1 - i, msgs.get(i));
+//                }
+//                msgListView.setSelection(totalSize);
+//            }
+//            else{
+//                msgListView.setSelection(msgs.size());
+//            }
+            msgList.clear();
+            msgList.addAll(msgs);
+            adapter.notifyDataSetChanged();
+            msgListView.setSelection(msgs.size());
         }else{
+            msgList.addAll(0, msgs);
+            adapter.notifyDataSetChanged();
             msgListView.setSelection(msgs.size());
         }
     }
