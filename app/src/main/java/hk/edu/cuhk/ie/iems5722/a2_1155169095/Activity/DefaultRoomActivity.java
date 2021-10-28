@@ -1,8 +1,8 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Activity;
 
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.APIString.SEND_MESSAGES;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageClassTimeFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getTimeMillis;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.APIString.SEND_MESSAGES;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.MessageClassTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.Time.getTimeMillis;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,15 +24,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter.MsgAdapter;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Chatroom;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Network.Client;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionHandler;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionUtil;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Adapter.MsgAdapter;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Chatroom;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.User;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.MainActivity;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Network.Client;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.R;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.ExceptionHandler;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.ExceptionUtil;
 
 public class DefaultRoomActivity extends AppCompatActivity {
 
@@ -62,6 +61,7 @@ public class DefaultRoomActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.refresh_btn:
                 refreshChat();
+                break;
             case android.R.id.home:
                 finish();
         }

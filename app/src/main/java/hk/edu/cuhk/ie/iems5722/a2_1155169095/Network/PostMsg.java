@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Network;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Network;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

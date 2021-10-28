@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Chatroom;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Chatroom;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.R;
 
 public class ChatroomAdapter extends ArrayAdapter<Chatroom> {
     class ViewHolder{

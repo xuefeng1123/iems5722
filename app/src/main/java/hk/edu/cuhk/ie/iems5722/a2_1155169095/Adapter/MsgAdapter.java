@@ -1,7 +1,7 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Adapter;
 
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageTimeFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time.getChatStartTime;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.MessageTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.Time.getChatStartTime;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.Time;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.MainActivity;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.R;
 
 public class MsgAdapter extends ArrayAdapter<Msg> {
     class ViewHolder{

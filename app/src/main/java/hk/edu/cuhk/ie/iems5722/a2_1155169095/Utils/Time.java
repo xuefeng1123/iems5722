@@ -1,12 +1,12 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils;
 
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.DayAndMonthGapFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.DayBeforeYesterdayGapFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MessageClassTimeFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.MinAndHourGapFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.TimeSlice;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.YearGapFormat;
-import static hk.edu.cuhk.ie.iems5722.a1_1155169095.Consts.YesterdayGapFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.DayAndMonthGapFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.DayBeforeYesterdayGapFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.MessageClassTimeFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.MinAndHourGapFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.TimeSlice;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.YearGapFormat;
+import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.YesterdayGapFormat;
 
 import android.util.Log;
 

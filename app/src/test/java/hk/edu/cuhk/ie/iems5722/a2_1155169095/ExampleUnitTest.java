@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095;
 
 import org.junit.Test;
 

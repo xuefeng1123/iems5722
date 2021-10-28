@@ -1,4 +1,4 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +13,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity.DefaultRoomActivity;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Adapter.ChatroomAdapter;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Chatroom;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Network.Client;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Activity.DefaultRoomActivity;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Adapter.ChatroomAdapter;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Chatroom;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.User;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Network.Client;
 
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";

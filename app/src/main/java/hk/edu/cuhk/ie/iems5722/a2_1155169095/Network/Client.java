@@ -1,12 +1,10 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Network;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Network;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
 
 
 import androidx.annotation.RequiresApi;
@@ -18,17 +16,14 @@ import com.alibaba.fastjson.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.APIString;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Activity.DefaultRoomActivity;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Chatroom;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.Msg;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Entity.User;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.MainActivity;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionHandler;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.ExceptionUtil;
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils.Time;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.APIString;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Activity.DefaultRoomActivity;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Chatroom;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Entity.Msg;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.MainActivity;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.ExceptionHandler;
+import hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils.ExceptionUtil;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;

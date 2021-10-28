@@ -1,11 +1,8 @@
-package hk.edu.cuhk.ie.iems5722.a1_1155169095.Utils;
+package hk.edu.cuhk.ie.iems5722.a2_1155169095.Utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.View;
 import android.widget.Toast;
-
-import hk.edu.cuhk.ie.iems5722.a1_1155169095.R;
 
 public class ExceptionHandler {
     public static void handleIllegalChatroomIDException(Context context){
