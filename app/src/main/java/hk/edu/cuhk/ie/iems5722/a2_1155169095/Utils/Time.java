@@ -11,6 +11,7 @@ import static hk.edu.cuhk.ie.iems5722.a2_1155169095.Consts.YesterdayGapFormat;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Time {
@@ -45,13 +46,23 @@ public class Time {
         Date lastDate = new Date(lastTime);//the time of last message
         Date date = new Date(time);//the time of the message
         Date currDate = new Date(System.currentTimeMillis());//curr time
+        Date currEndDate = getEndTime();
+        Date currStartDate = getStartTime();
 
         long gapTimeMillis = date.getTime() - lastDate.getTime();
         long currTimeMillis = currDate.getTime() - date.getTime();
+        long currDateTimeMillis = currEndDate.getTime() - date.getTime();
 
 
         long iterationTime = currTimeMillis;
         int timeIndex = 0;
+
+        long days = currDateTimeMillis / (TimeSlice[0] * TimeSlice[1] * TimeSlice[2] * TimeSlice[3]);
+        if(days >= 1){
+            gapTimeMillis = currEndDate.getTime() - lastDate.getTime();
+            timeIndex = 4;
+            iterationTime = days;
+        }
         while(timeIndex < TimeSlice.length && iterationTime >= TimeSlice[timeIndex]){
             iterationTime /= TimeSlice[timeIndex++];
         }
@@ -118,5 +129,24 @@ public class Time {
         Date date = new Date(time - 2*oneDay);
         return sdf.format(date);
     }
+
+    private static Date getStartTime() {
+        Calendar todayStart = Calendar.getInstance();
+        todayStart.set(Calendar.HOUR_OF_DAY, 0);
+        todayStart.set(Calendar.MINUTE, 0);
+        todayStart.set(Calendar.SECOND, 0);
+        todayStart.set(Calendar.MILLISECOND, 0);
+        return todayStart.getTime();
+    }
+
+    private static Date getEndTime() {
+        Calendar todayEnd = Calendar.getInstance();
+        todayEnd.set(Calendar.HOUR_OF_DAY, 23);
+        todayEnd.set(Calendar.MINUTE, 59);
+        todayEnd.set(Calendar.SECOND, 59);
+        todayEnd.set(Calendar.MILLISECOND, 999);
+        return todayEnd.getTime();
+    }
+
 
 }

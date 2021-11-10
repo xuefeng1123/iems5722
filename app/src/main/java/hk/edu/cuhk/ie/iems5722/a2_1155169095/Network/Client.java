@@ -59,6 +59,7 @@ public class Client  {
                                 }
                             });
                         }else{
+                            Log.e("error", responseJson.toString());
                             throw new ExceptionUtil.GetInfoException();
                         }
                     }else{
@@ -156,6 +157,7 @@ public class Client  {
 
     public static void postMsg(Context context, JSONObject postMsgJson, String url){
         //RequestBody requestBody =  RequestBody.create( postMsgJson.toJSONString(), okhttp3.MediaType.get("application/json; charset=utf-8"));
+//        String url1 = "http://127.0.0.1:8080/api/a3/send_message";
         RequestBody requestBody =  new FormBody.Builder()
                 .add("chatroom_id", postMsgJson.getString("chatroom_id"))
                 .add("message", postMsgJson.getString("message"))

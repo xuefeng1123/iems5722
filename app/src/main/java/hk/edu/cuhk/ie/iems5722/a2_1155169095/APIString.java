@@ -4,7 +4,8 @@ public class APIString {
 
     public static String Head = "http://";
 
-    public static String ServerHost = "18.217.125.61";
+    public static String ServerHost = "10.0.2.2:8080";
+//    public static String ServerHost = "42.193.248.26:8080";
 
     public static String Version = "api/a3";
 
