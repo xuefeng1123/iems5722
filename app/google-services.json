@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "215252249407",
+    "project_id": "iems5722-e352f",
+    "storage_bucket": "iems5722-e352f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215252249407:android:19d9cf2a36bf2889e7818a",
+        "android_client_info": {
+          "package_name": "hk.edu.cuhk.ie.iems5722.a1_1155169095"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215252249407-m6vanj9efkukgshrtrd2hkc56u5bpecp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hk.edu.cuhk.ie.iems5722.a1_1155169095",
+            "certificate_hash": "055bc77b73904a48c12b614859fa74f6b3b13ad2"
+          }
+        },
+        {
+          "client_id": "215252249407-ou6sdc9hamd0170o56apvjkjtjf3dfeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB5PHjw2RIxsuYVqQh35RDSFOJiY9gCCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215252249407-ou6sdc9hamd0170o56apvjkjtjf3dfeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
