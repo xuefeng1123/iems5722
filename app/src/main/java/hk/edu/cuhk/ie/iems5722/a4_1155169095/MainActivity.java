@@ -1,6 +1,9 @@
 package hk.edu.cuhk.ie.iems5722.a4_1155169095;
 
+import static hk.edu.cuhk.ie.iems5722.a4_1155169095.APIString.SEND_TOKEN;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +35,9 @@ import hk.edu.cuhk.ie.iems5722.a4_1155169095.Network.Client;
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";
 
-    public static User currUser = new User("1155169095", "Xuefeng", R.mipmap.user_pic_0);
+//    public static User currUser = new User("1155169095", "Xuefeng", R.mipmap.user_pic_0);
+//    public static User currUser = new User("111", "MyHuaweiM6", R.mipmap.user_pic_0);
+    public static User currUser = new User("112", "Pixel22", R.mipmap.user_pic_0);
 
     private volatile List<Chatroom> chatroomList = new ArrayList<Chatroom>();
 
@@ -94,21 +99,6 @@ public class MainActivity extends AppCompatActivity {
                     channelName, NotificationManager.IMPORTANCE_LOW));
         }
 
-        Log.d(TAG, "Subscribing to weather topic");
-        // [START subscribe_topics]
-        FirebaseMessaging.getInstance().subscribeToTopic("weather")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = getString(R.string.msg_subscribed);
-                        if (!task.isSuccessful()) {
-                            msg = getString(R.string.msg_subscribe_failed);
-                        }
-                        Log.d(TAG, msg);
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-        // [END subscribe_topics]
 
         // [START log_reg_token]
         FirebaseMessaging.getInstance().getToken()
@@ -122,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // Get new FCM registration token
                         String token = task.getResult();
-
+                        Client.postToken(MainActivity.this, SEND_TOKEN, Integer.parseInt(MainActivity.currUser.id), token);
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
@@ -138,6 +128,24 @@ public class MainActivity extends AppCompatActivity {
         chatroomList.clear();
         chatroomList.addAll(chatrooms);
         chatroomAdapter.notifyDataSetChanged();
+        subscirbeTopics(chatrooms);
+    }
+
+    public void subscirbeTopics(List<Chatroom> chatrooms){
+        for (Chatroom chatroom:
+             chatrooms) {
+            Log.d(TAG, "Subscribing to chatroom: " + chatroom.name);
+            FirebaseMessaging.getInstance().subscribeToTopic(chatroom.id + "")
+                    .addOnCompleteListener(task -> {
+                        String msg = getString(R.string.msg_subscribed);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d(TAG, msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    });
+        }
+
     }
 
     private void mockData(){

@@ -28,4 +28,6 @@ public class Consts {
     //format of message send time on server response
     public static String NetworkMessageTimeFormat = "yyyy-MM-dd HH:mm";
 
+    public static String MsgChatroomNum = "topic";
+
 }

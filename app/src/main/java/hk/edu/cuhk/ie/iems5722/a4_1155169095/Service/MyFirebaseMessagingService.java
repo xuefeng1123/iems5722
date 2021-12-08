@@ -1,6 +1,8 @@
 package hk.edu.cuhk.ie.iems5722.a4_1155169095.Service;
 
 
+import static hk.edu.cuhk.ie.iems5722.a4_1155169095.Consts.MsgChatroomNum;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,6 +20,10 @@ import com.google.firebase.messaging.RemoteMessage;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+
+import hk.edu.cuhk.ie.iems5722.a4_1155169095.Activity.DefaultRoomActivity;
 import hk.edu.cuhk.ie.iems5722.a4_1155169095.MainActivity;
 import hk.edu.cuhk.ie.iems5722.a4_1155169095.R;
 
@@ -81,7 +87,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            sendNotification(remoteMessage.getNotification().getBody());
+            sendNotification(remoteMessage.getNotification().getTitle(),
+                    Integer.parseInt(Objects.requireNonNull(remoteMessage.getData().get(MsgChatroomNum))),
+                    Objects.requireNonNull(remoteMessage.getNotification().getBody()));
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -146,8 +154,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      *
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void sendNotification(String title,int chatroom_id, String messageBody) {
+        byte[] messageBytes = messageBody.getBytes(StandardCharsets.UTF_8);
+        Intent intent = new Intent(this, DefaultRoomActivity.class);
+        intent.putExtra("chatroomID", chatroom_id);
+        intent.putExtra("chatroomName", title);
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -157,7 +169,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_stat_fcm)
-                        .setContentTitle(getString(R.string.fcm_message))
+                        .setContentTitle(title)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)

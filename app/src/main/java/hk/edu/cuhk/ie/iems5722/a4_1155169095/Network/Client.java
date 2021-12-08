@@ -198,4 +198,36 @@ public class Client  {
         asyncTask.execute();
     }
 
+    public static void postToken(Context context, String url, int userID, String token){
+        RequestBody requestBody =  new FormBody.Builder()
+                .add("user_id", "" + userID)
+                .add("token", token)
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        AsyncTask<Void, Void, String> asyncTask = new AsyncTask<Void, Void, String>(){
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try{
+                    Response response = client.newCall(request).execute();
+                    if(!response.isSuccessful()){
+                        throw new ExceptionUtil.PostInfoException();
+                    }
+                }catch (IOException e){
+                    Log.e("IOE in post process", e.toString());
+                    ExceptionHandler.handlePostInfoException(context);
+                }catch (ExceptionUtil.PostInfoException e){
+                    Log.e("Error in post process!", e.toString());
+                    ExceptionHandler.handlePostInfoException(context);
+                }
+
+                return null;
+            }
+        };
+        asyncTask.execute();
+    }
+
 }

@@ -156,16 +156,6 @@ public class DefaultRoomActivity extends AppCompatActivity {
         //when the page == 1, means that the user open this chatroom just now, so the chatroom should
         //show the newest message
         if(page == 1){
-//            int totalSize = msgList.size();
-//            if(totalSize >= msgs.size()){
-//                for(int i = 0; i < msgs.size() ; i++){
-//                    msgList.set(totalSize - 1 - i, msgs.get(i));
-//                }
-//                msgListView.setSelection(totalSize);
-//            }
-//            else{
-//                msgListView.setSelection(msgs.size());
-//            }
             msgList.clear();
             msgList.addAll(msgs);
             adapter.notifyDataSetChanged();
