@@ -35,9 +35,9 @@ import hk.edu.cuhk.ie.iems5722.a4_1155169095.Network.Client;
 public class MainActivity extends AppCompatActivity {
     public static String currRoom = "Default Chat Room";
 
-//    public static User currUser = new User("1155169095", "Xuefeng", R.mipmap.user_pic_0);
+    public static User currUser = new User("1155169095", "Xuefeng", R.mipmap.user_pic_0);
 //    public static User currUser = new User("111", "MyHuaweiM6", R.mipmap.user_pic_0);
-    public static User currUser = new User("112", "Pixel22", R.mipmap.user_pic_0);
+//    public static User currUser = new User("112", "Pixel22", R.mipmap.user_pic_0);
 
     private volatile List<Chatroom> chatroomList = new ArrayList<Chatroom>();
 
@@ -83,11 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        getFCMToken();
     }
     private static final String TAG = "MainActivity";
-    public void getFCMToken(){
+    public void getFCMToken(List<Chatroom> chatrooms){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
@@ -117,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
                         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+                        subscirbeTopics(chatrooms);
                     }
                 });
         // [END log_reg_token]
@@ -128,16 +128,16 @@ public class MainActivity extends AppCompatActivity {
         chatroomList.clear();
         chatroomList.addAll(chatrooms);
         chatroomAdapter.notifyDataSetChanged();
-        subscirbeTopics(chatrooms);
+
+        getFCMToken(chatrooms);
     }
 
     public void subscirbeTopics(List<Chatroom> chatrooms){
         for (Chatroom chatroom:
              chatrooms) {
-            Log.d(TAG, "Subscribing to chatroom: " + chatroom.name);
             FirebaseMessaging.getInstance().subscribeToTopic(chatroom.id + "")
                     .addOnCompleteListener(task -> {
-                        String msg = getString(R.string.msg_subscribed);
+                        String msg = "Subscribing to chatroom: " + chatroom.name;
                         if (!task.isSuccessful()) {
                             msg = getString(R.string.msg_subscribe_failed);
                         }
